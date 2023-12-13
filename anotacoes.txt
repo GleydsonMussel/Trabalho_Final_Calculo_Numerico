@@ -1,0 +1,16 @@
+Tomar cuidado com chutes iniciais, algumas vezes encontrei matrizes singulares
+
+Diferentes dos outros sistemas, para o primeiro de três variáveis, ou não foi possível estimar "na mão" um bom chute inicial, 
+como pode ser visto no gráfico da tentativa que deu errado, mesmo com um número considerável de iterações, assim, testamos utilizar 
+o método dos mínimos quadrados para fazer uma estimativa de chute inicial, o que também não deu certo, logo, é provável que 
+o sistema testado sequer tinha solução, sendo assim, buscamos um outro sistema, dessa vez no livro "FONTE" 
+
+Onde pegar sistemas de equações não lineares:
+
+Livros Análise Numérica Richard L Burden e J Douglas Faires
+
+Observações para a parte do PROBLEMA DE CONTORNO:
+
+Colocar o gráfico Grafico_Sistema_1_Duas_Equacoes com escala logarítmica no eixo y
+
+Para a parte dois, do problema de considção de contorno, plotar gráficos de pra lambdas diferentes, soluções para o mesmo N
