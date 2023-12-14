@@ -11,9 +11,9 @@ def func_1__duas_equacoes(x):
     return np.array([f1, f2])
 
 def func_1__tres_equacoes(x):
-    f1 = x[0] + x[1] + x[2] - 6
-    f2 = x[0] * x[1] + x[1] * x[2] + x[2] * x[0] - 6
-    f3 = x[0] * x[1] * x[2] - 6
+    f1 = x[0]**2  + x[1]**2  + x[2]**2 - 9
+    f2 = x[0] * x[1]  * x[2] - 1
+    f3 = x[0] + x[1] - x[2]**2 
     return np.array([f1, f2, f3])
 
 def func_2__duas_equacoes(x):
