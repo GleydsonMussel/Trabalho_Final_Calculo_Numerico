@@ -67,13 +67,20 @@ u0s = [np.zeros([Ns[0]-2]), np.zeros([Ns[1]-2]), np.zeros([Ns[2]-2])]
 # Lambda
 lambidas = [1,2,3,4,5,6]
 
+
+
+solucoes_to_plot = {}
+solucoes_to_plot["N10"] = []
+solucoes_to_plot["N50"] = []
+solucoes_to_plot["N100"] = []
+
 nomes_graficos = ["Grafico_Lambda_1", "Grafico_Lambda_2", "Grafico_Lambda_3", "Grafico_Lambda_4", "Grafico_Lambda_5", "Grafico_Lambda_6" ]
 
 for [lambida, nome_grafico] in zip(lambidas, nomes_graficos):
-    solucoes_plot = []
+    
     for [xloc, h, N, u0] in zip(xlocs, hs, Ns, u0s):
         
-        n_iteracoes, distancias_do_zero, solucoes = newton_raphson_system(lambida, xloc, h, N, u0, funcao2, monta_jacobiano2, tol=1e-5, max_iter=100)
+        n_iteracoes, distancias_do_zero, solucoes = newton_raphson_system(lambida, xloc, h, N, u0, funcao2, monta_jacobiano2, tol=1e-7, max_iter=100)
         # Uma vez que o vetor de soluções está aqui, ele ainda não tem anexado nele os valores da condição de contorno, logo, é necessário anexar aqui
         solucao_plot = np.array([])
         solucao_plot = np.append(solucao_plot, 0)
@@ -81,7 +88,9 @@ for [lambida, nome_grafico] in zip(lambidas, nomes_graficos):
         solucoes = np.append(solucoes, 0)
         # Anexando condição de contorno INFERIOR
         solucao_plot = np.append(solucao_plot, solucoes)
-        solucoes_plot.append(solucao_plot)
+        solucoes_to_plot["N"+str(N)].append(solucao_plot)
         
-    plota_graficos.plota_parte_b(xs, solucoes_plot,"Grafico_parte_B_lambda_"+str(lambida), lambida)
+for [x, N, solucoes_to_N] in zip(xs, Ns, solucoes_to_plot):
+    
+    plota_graficos.plota_parte_b_N_Para_mesmos_Lambdas(x, solucoes_to_plot[solucoes_to_N],"Grafico_parte_B_N_"+str(N), N, lambidas)
 

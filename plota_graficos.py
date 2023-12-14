@@ -44,7 +44,7 @@ def plota_EDO(vetor_x, vetor_y, nome_graficos):
     #plt.ylim(-1,9)
     plt.grid()
     plt.plot(vetor_x, vetor_y)
-    plt.savefig("./Graficos/"+nome_graficos+".png")
+    plt.savefig("./GraficosParteB/"+nome_graficos+".png")
     plt.close()
 
 def plota_parte_b(xs, solucoes, nome_graficos, lambida ):
@@ -65,4 +65,23 @@ def plota_parte_b(xs, solucoes, nome_graficos, lambida ):
         
     plt.legend()
     plt.savefig("./GraficosParteB/"+nome_graficos+".png")
+    plt.close()
+    
+def plota_parte_b_N_Para_mesmos_Lambdas(x, solucoes, nome_graficos, N, lambidas):
+    
+    plt.title("Gráfico Aproximado da EDO para N = "+str(N), fontdict = fonte_titulo)
+    
+    plt.xlabel("x", fontdict = fonte_labels)
+    plt.ylabel("u(x)", fontdict = fonte_labels)
+    
+    #plt.xticks(np.arange(0,100,1))
+    #plt.xlim(5,19)
+    #plt.yticks(np.arange(0,5,1))
+    #plt.ylim(-1,9)
+    plt.grid()
+    for [solucao, label] in zip(solucoes, lambidas):
+        plt.plot(x, solucao, label = "λ = "+str(label))
+        
+    plt.legend()
+    plt.savefig("./Graficos_ParteB_FINAL/"+nome_graficos+".png")
     plt.close()

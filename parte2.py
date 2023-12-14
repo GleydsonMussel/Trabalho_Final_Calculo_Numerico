@@ -1,5 +1,6 @@
 import numpy as np
 import plota_graficos
+import time
 # Disretizar o domínio dado, [a,b] em N pontos
 # Passo para cada ponto: (b-a)/N, b>a
 # Aproximação para a segunda derivada: (y_antes - 2*y_atual + y_depois)/passo^2
@@ -70,7 +71,7 @@ def newton_raphson_system(lambida, x, h, N, u0, funcao, jacobian, tol=1e-7, max_
     return iteracoes, distancias_do_zero, u 
 
 # Discretização
-N = 10
+N = 50
 # Passo da Discretização
 h = 1.0/N
 # Vetor para os valores de x 
@@ -81,7 +82,15 @@ u0 = np.zeros([N-2])
 # Lambda
 lambida = 2
 
-n_iteracoes, distancias_do_zero, solucoes = newton_raphson_system(lambida, xloc, h, N, u0, funcao, monta_jacobiano2, tol=1e-5, max_iter=100)
+# Pega o tempo do começo da execução
+tempo_comeco = time.time()
+# Chama o método
+n_iteracoes, distancias_do_zero, solucoes = newton_raphson_system(lambida, xloc, h, N, u0, funcao, monta_jacobiano2, tol=1e-7, max_iter=100)
+# Pega o tempo do começo da execução
+tempo_fim = time.time()
+
+print()
+print(tempo_fim-tempo_comeco)
 
 # Uma vez que o vetor de soluções está aqui, ele ainda não tem anexado nele os valores da condição de contorno, logo, é necessário anexar aqui
 solucao_plot = np.array([])
