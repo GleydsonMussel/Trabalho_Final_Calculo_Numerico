@@ -37,9 +37,9 @@ def jacobian_func1__duas_equacoes(x):
 
 def jacobian_func1__tres_equacoes(x):
     return np.array([
-        [1, 1, 1],
-        [x[1] + x[2], x[0] + x[2], x[0] + x[1]],
-        [x[1]*x[2], x[0]*x[2], x[0]*x[1]]
+        [2* x[0], 2 * x[1], 2 * x[2]],
+        [x[1] * x[2], x[0] * x[2], x[0] * x[1]],
+        [1, 1, -2 * x[2]]
     ])
 
 def jacobian_func2__duas_equacoes(x):
